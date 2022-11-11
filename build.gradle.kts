@@ -21,6 +21,7 @@ tasks.getByName("cyclonedxBom", CycloneDxTask::class) {
             "releaseUnitTestRuntimeClasspath"
         )
     )
+    setIncludeConfigs(listOf("debugCompileClasspath"))
 }
 
 //cyclonedxBom
