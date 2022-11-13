@@ -10,17 +10,17 @@ plugins {
 }
 
 tasks.getByName("cyclonedxBom", CycloneDxTask::class) {
-    setProjectType("application")
-    setSkipConfigs(
-        listOf(
-            "debugCompileClasspath",
-            "debugAndroidTestCompileClasspath",
-            "debugUnitTestCompileClasspath",
-            "releaseUnitTestCompileClasspath",
-            "debugUnitTestRuntimeClasspath",
-            "releaseUnitTestRuntimeClasspath"
-        )
-    )
+//    setProjectType("application")
+//    setSkipConfigs(
+//        listOf(
+//            "debugCompileClasspath",
+//            "debugAndroidTestCompileClasspath",
+//            "debugUnitTestCompileClasspath",
+//            "releaseUnitTestCompileClasspath",
+//            "debugUnitTestRuntimeClasspath",
+//            "releaseUnitTestRuntimeClasspath"
+//        )
+//    )
     setIncludeConfigs(listOf("debugCompileClasspath"))
 }
 

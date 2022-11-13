@@ -1,7 +1,20 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+//    id("org.cyclonedx.bom")
 }
+
+//tasks.withType<org.cyclonedx.gradle.CycloneDxTask>().configureEach {
+//    setSkipConfigs(listOf(
+//        "debugCompileClasspath",
+//        "debugAndroidTestCompileClasspath",
+//        "debugUnitTestCompileClasspath",
+//        "releaseUnitTestCompileClasspath",
+//        "debugUnitTestRuntimeClasspath",
+//        "releaseUnitTestRuntimeClasspath"
+//    ))
+//    setIncludeConfigs(listOf("debugRuntimeClasspath"))
+//}
 
 android {
     namespace = "com.lomovskiy.android.test.cyclonedx.android.module"
@@ -34,7 +47,7 @@ android {
 }
 
 dependencies {
-
+    implementation("io.reactivex.rxjava3:rxandroid:3.0.2")
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.5.1")
     implementation("com.google.android.material:material:1.7.0")

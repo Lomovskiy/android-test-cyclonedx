@@ -3,12 +3,20 @@ import org.cyclonedx.gradle.CycloneDxTask
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("org.cyclonedx.bom")
+//    id("org.cyclonedx.bom")
 }
 
-tasks.getByName("cyclonedxBom", CycloneDxTask::class) {
-    setIncludeConfigs(listOf("debugCompileClasspath"))
-}
+//tasks.withType<CycloneDxTask>().configureEach {
+//    setSkipConfigs(listOf(
+//        "debugCompileClasspath",
+//        "debugAndroidTestCompileClasspath",
+//        "debugUnitTestCompileClasspath",
+//        "releaseUnitTestCompileClasspath",
+//        "debugUnitTestRuntimeClasspath",
+//        "releaseUnitTestRuntimeClasspath"
+//    ))
+//    setIncludeConfigs(listOf("debugRuntimeClasspath"))
+//}
 
 android {
     namespace = "com.lomovskiy.android.test.cyclonedx"
@@ -34,11 +42,15 @@ android {
 
 var cycloneDxConfiguration: String? = null
 
-dependencies {
-    if (gradle.startParameter.taskNames.contains("cyclonedxBom")) {
+fun initCycloneDxConfig() {
+    if(gradle.startParameter.taskNames.contains("cyclonedxBom")) {
         cycloneDxConfiguration = "default"
     }
-    implementation(project(path = ":android-module", configuration = cycloneDxConfiguration))
+}
+
+dependencies {
+//    initCycloneDxConfig()
+    implementation(project(path = ":android-module", configuration = "default"))
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.5.1")
     implementation("com.google.android.material:material:1.7.0")
